@@ -8,10 +8,12 @@ const Book = require("../models/book");
 exports.bookinstance_list = asyncHandler(async (req, res, next) => {
   const allBookInstances = await BookInstance.find().populate("book").exec();
 
-  res.render("bookinstance_list", {
-    title: "Book Instance List",
-    bookinstance_list: allBookInstances,
-  });
+  // res.render("bookinstance_list", {
+  //   title: "Book Instance List",
+  //   bookinstance_list: allBookInstances,
+  // });
+
+  res.json({ bookinstance_list: allBookInstances });
 });
 
 
@@ -28,10 +30,12 @@ exports.bookinstance_detail = asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  res.render("bookinstance_detail", {
-    title: "Book:",
-    bookinstance: bookInstance,
-  });
+  // res.render("bookinstance_detail", {
+  //   title: "Book:",
+  //   bookinstance: bookInstance,
+  // });
+
+  res.json({ bookinstance: bookInstance });
 });
 
 

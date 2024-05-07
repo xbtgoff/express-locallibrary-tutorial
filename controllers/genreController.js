@@ -6,7 +6,9 @@ const { body, validationResult } = require("express-validator");
 // Display list of all Genre.
 exports.genre_list = asyncHandler(async (req, res) => {
   const list_genres = await Genre.find().sort([["name", "ascending"]]);
-  res.render("genre_list", { title: "Genre List", genre_list: list_genres });
+  // res.render("genre_list", { title: "Genre List", genre_list: list_genres });
+
+  res.json({ genre_list: list_genres });
 });
 
 // Display detail page for a specific Genre.
@@ -23,11 +25,13 @@ exports.genre_detail = asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  res.render("genre_detail", {
-    title: "Genre Detail",
-    genre: genre,
-    genre_books: booksInGenre,
-  });
+  // res.render("genre_detail", {
+  //   title: "Genre Detail",
+  //   genre: genre,
+  //   genre_books: booksInGenre,
+  // });
+
+  res.json({ genre: genre, genre_books: booksInGenre });
 });
 
 
