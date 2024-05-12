@@ -3,3 +3,376 @@
   padding: 0;
   list-style: none;
 }
+
+body {
+  background-color: #556832;
+  font-family: 'Arial', 'sans-serif', serif;
+  margin: 0;
+  padding: 20px;
+  color: black;
+}
+h1 {
+  color: black;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+h1::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #e1e4da;
+  opacity: 0.7;
+  z-index: -1;
+}
+.book-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  flex-direction: row;
+}
+.book {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #e1e4da;
+}
+.book img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.book-title {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: black;
+}
+.book-authors {
+  font-style: italic;
+  color: black;
+}
+
+#bookCreationModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+#bookCreationModal .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+#bookCreationModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+#bookCreationModal .close:hover, #bookCreationModal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.toast {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f44336;
+  color: white;
+  padding: 16px;
+  border-radius: 4px;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+input, select, textarea, button {
+  border: 2px solid #333;
+  background-color: white;
+  border-radius: 0.25rem;
+  font: 1.25rem / 1.5 sans-serif;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+textarea {
+  min-height: 10rem;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+}
+button:hover {
+  background-color: #45a049;
+  color: white;
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0.5rem 0;
+}
+label {
+  display: flex;
+  align-items: center;
+}
+select {
+  appearance: none;
+  background-image: url('path/to/your/arrow-icon.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 2rem;
+}
+#bookCreationModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+#modalContent {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+#closeButton {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.sidebar ul {
+  list-style-type: none;
+  padding-bottom: 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: row; /* изменено */
+  justify-content: center;
+  align-items: center; /* добавлено */
+  height: 100%;
+}
+
+.sidebar li {
+  text-align: center;
+  margin-right: 10px; /* изменено */
+}
+
+.sidebar li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white; /* Добавляем рамку */
+  padding: 8px 16px; /* Добавляем отступы внутри ссылки */
+  border-radius: 4px; /* Добавляем скругление углов */
+}
+
+.sidebar li a:hover {
+  background-color: white; /* Добавляем фон при наведении */
+}
+
+
+.sidebar li:last-child {
+  margin-right: 0; /* добавлено */
+}
+
+.sidebar li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar li a:hover {
+  color: black;
+}
+.book-instance {
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Регулируйте значение для изменения радиуса скругления */
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white; /* Белый фон */
+    color: black; /* Черный текст */
+}
+.author-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: color 0.1s ease; /* Добавляем плавный переход цвета */
+}
+
+.author-link:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.genre-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: color 0.1s ease; /* Добавляем плавный переход цвета */
+}
+
+.genre-link:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.bookinstance-link {
+  text-decoration: none;
+  color: black;
+  transition: color 0.1s ease; /* Добавляем плавный переход цвета */
+}
+
+.bookinstance-link:hover {
+  color: rgb(51, 110, 51);
+  font-weight: bold;
+}
+
+.delete-button {
+  width: 75px;
+  background-color: #ff6347; /* Красный цвет */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #ff473d; /* Немного более темный оттенок красного при наведении */
+}
+
+.update-button {
+  width: 75px;
+  background-color: #444444; /* Красный цвет */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: #242424; /* Немного более темный оттенок красного при наведении */
+}
+
+.book-title-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: 0.1s ease;
+}
+
+.book-title-link:hover {
+  font-weight: bold;
+}
+
+.border-with-background {
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Регулируйте значение для изменения радиуса скругления */
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white; /* Белый фон */
+  color: black; /* Черный текст */
+}
+
+.checkbox-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.checkbox-custom {
+  cursor: pointer;
+}
+
+.checkbox-custom input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkbox-custom label:before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.checkbox-custom input[type="checkbox"]:checked + label:before {
+  background-color: #007bff;
+}
+
+.checkbox-custom label span {
+  font-weight: bold;
+}
+
+.checkbox-custom label:after {
+  content: '\2713';
+  display: none;
+  font-size: 12px;
+  color: #fff;
+}
+
+.checkbox-custom input[type="checkbox"]:checked + label:after {
+  display: inline-block;
+}
+
+#bookinstanceDetail, #genreDetail, #authorDetail, #bookDetail {
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Регулируйте значение для изменения радиуса скругления */
+  margin-top: 10px;
+  padding: 15px;
+  background-color: white; /* Белый фон */
+  color: black; /* Черный текст */
+}

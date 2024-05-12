@@ -86,11 +86,13 @@ exports.author_create_post = [
 
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/errors messages.
-      res.render("author_form", {
-        title: "Create Author",
-        author: author,
-        errors: errors.array(),
-      });
+      // res.render("author_form", {
+      //   title: "Create Author",
+      //   author: author,
+      //   errors: errors.array(),
+      // });
+
+      res.json({ author: author, errors: errors.array() });
       return;
     } else {
       // Data from form is valid.
@@ -98,31 +100,32 @@ exports.author_create_post = [
       // Save author.
       await author.save();
       // Redirect to new author record.
-      res.redirect(author.url);
+      // res.redirect(author.url);
+      res.json({ author: author });
     }
   }),
 ];
 
 
-// Display Author delete form on GET.
-exports.author_delete_get = asyncHandler(async (req, res, next) => {
-  // Get details of author and all their books (in parallel)
-  const [author, allBooksByAuthor] = await Promise.all([
-    Author.findById(req.params.id).exec(),
-    Book.find({ author: req.params.id }, "title summary").exec(),
-  ]);
+// // Display Author delete form on GET.
+// exports.author_delete_get = asyncHandler(async (req, res, next) => {
+//   // Get details of author and all their books (in parallel)
+//   const [author, allBooksByAuthor] = await Promise.all([
+//     Author.findById(req.params.id).exec(),
+//     Book.find({ author: req.params.id }, "title summary").exec(),
+//   ]);
 
-  if (author === null) {
-    // No results.
-    res.redirect("/catalog/authors");
-  }
+//   if (author === null) {
+//     // No results.
+//     res.redirect("/catalog/authors");
+//   }
 
-  res.render("author_delete", {
-    title: "Delete Author",
-    author: author,
-    author_books: allBooksByAuthor,
-  });
-});
+//   res.render("author_delete", {
+//     title: "Delete Author",
+//     author: author,
+//     author_books: allBooksByAuthor,
+//   });
+// });
 
 
 // Handle Author delete on POST.
@@ -135,16 +138,19 @@ exports.author_delete_post = asyncHandler(async (req, res, next) => {
 
   if (allBooksByAuthor.length > 0) {
     // Author has books. Render in same way as for GET route.
-    res.render("author_delete", {
-      title: "Delete Author",
-      author: author,
-      author_books: allBooksByAuthor,
-    });
+    // res.render("author_delete", {
+    //   title: "Delete Author",
+    //   author: author,
+    //   author_books: allBooksByAuthor,
+    // });
+
+    res.json({ author: author, author_books: allBooksByAuthor });
     return;
   } else {
     // Author has no books. Delete object and redirect to the list of authors.
     await Author.findByIdAndDelete(req.body.authorid);
-    res.redirect("/catalog/authors");
+    // res.redirect("/catalog/authors");
+    res.json({ author: author });
   }
 });
 
@@ -158,7 +164,9 @@ exports.author_update_get = asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  res.render("author_form", { title: "Update Author", author: author });
+  // res.render("author_form", { title: "Update Author", author: author });
+
+  res.json({ author: author });
 });
 
 // Handle Author update on POST.
@@ -203,16 +211,19 @@ exports.author_update_post = [
 
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values and error messages.
-      res.render("author_form", {
-        title: "Update Author",
-        author: author,
-        errors: errors.array(),
-      });
+      // res.render("author_form", {
+      //   title: "Update Author",
+      //   author: author,
+      //   errors: errors.array(),
+      // });
+
+      res.json({ author: author, errors: errors.array() });
       return;
     } else {
       // Data from form is valid. Update the record.
       await Author.findByIdAndUpdate(req.params.id, author);
-      res.redirect(author.url);
+      // res.redirect(author.url);
+      res.json({ author: author });
     }
   }),
 ];
