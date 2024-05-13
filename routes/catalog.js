@@ -97,7 +97,7 @@ router.get("/author/create", (req, res) => {
 
 
 // POST request to delete Author.
-router.post("/author/:id/delete", author_controller.author_delete_post);
+// router.post("/author/:id/delete", author_controller.author_delete_post);
 
 
 // GET request to update Author.

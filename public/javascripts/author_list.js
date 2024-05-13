@@ -18,7 +18,7 @@ function displayAuthors(authors) {
   authors.forEach(author => {
       const li = document.createElement('li');
       const link = document.createElement('a');
-      link.href = `/catalog/author/${author._id}`; // Замените на нужный вам путь
+      link.href = `/catalog/author/${author._id}`;
       link.textContent = `${author.first_name} ${author.family_name}`;
       link.classList.add('author-link');
       li.appendChild(link);

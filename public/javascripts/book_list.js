@@ -46,7 +46,7 @@ function displayBooks(books) {
 
       const deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', () => deleteBook(book._id)); // Call deleteBook function with book's ID
+      deleteButton.addEventListener('click', () => deleteBook(book._id));
       bookElement.appendChild(deleteButton);
 
       bookContainer.appendChild(bookElement);
@@ -64,17 +64,13 @@ async function deleteBook(id) {
         });
 
         if (response.ok) {
-            // Book successfully deleted, now fetch updated book list
             fetchBooks();
         } else {
-            // Handle non-success status codes
             console.error('Error deleting book:', response.status);
-            // Optionally show an error message to the user
             showError(`Error deleting book: ${response.status}`);
         }
     } catch (error) {
         console.error('Error deleting book:', error);
-        // Optionally show an error message to the user
         showError(`Error deleting book: ${error}`);
     }
 }

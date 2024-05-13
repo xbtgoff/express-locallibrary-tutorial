@@ -18,7 +18,7 @@ function displayGenres(genres) {
     genres.forEach(genre => {
         const div = document.createElement('div');
         const link = document.createElement('a');
-        link.href = `/catalog/genre/${genre._id}`; // Замените на нужный вам путь
+        link.href = `/catalog/genre/${genre._id}`; 
         link.textContent = genre.name;
         link.classList.add('genre-link');
         div.appendChild(link);

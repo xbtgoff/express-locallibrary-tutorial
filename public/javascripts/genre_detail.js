@@ -16,7 +16,6 @@ function fetchGenreDetailsAndDisplay() {
             genreInfo += '</ul>';
             document.getElementById('genreDetail').innerHTML = genreInfo;
 
-            // Создание кнопок и привязка событий
             const deleteButton = document.createElement('button');
             deleteButton.classList.add('delete-button');
             deleteButton.textContent = 'Delete';

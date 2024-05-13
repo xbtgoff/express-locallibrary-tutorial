@@ -8,7 +8,7 @@ function loadBooks() {
       })
       .then(data => {
         const bookDropdown = document.getElementById("book");
-        bookDropdown.innerHTML = ""; // Clear previous options
+        bookDropdown.innerHTML = ""; 
         data.book_list.forEach(book => {
           const option = document.createElement("option");
           option.value = book._id;
