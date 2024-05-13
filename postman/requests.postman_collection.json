@@ -15,11 +15,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/book/{{TestBook}}",
+							"raw": "{{URL}}/api/book/{{TestBook}}",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
 								"book",
 								"{{TestBook}}"
 							]
@@ -33,12 +34,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/books",
+							"raw": "{{URL}}/api/book_list",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"books"
+								"api",
+								"book_list"
 							]
 						}
 					},
@@ -55,11 +57,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/author/{{TestAuthor}}",
+							"raw": "{{URL}}/api/author/{{TestAuthor}}",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
 								"author",
 								"{{TestAuthor}}"
 							]
@@ -73,12 +76,70 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/authors",
+							"raw": "{{URL}}/api/author_list",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"authors"
+								"api",
+								"author_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"\", //string\r\n    \"family_name\": \"\", //string\r\n    \"date_of_birth\": \"\", //yyyy-mm-dd\r\n    \"date_of_death\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/author/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"author",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"\", //string\r\n    \"family_name\": \"\", //string\r\n    \"date_of_birth\": \"\", //yyyy-mm-dd\r\n    \"date_of_death\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/author/{{TestAuthor}}/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"author",
+								"{{TestAuthor}}",
+								"update"
 							]
 						}
 					},
@@ -91,15 +152,28 @@
 			"item": [
 				{
 					"name": "BookInstance Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{URL}}/bookinstance/{{TestBookinstance}}",
+							"raw": "{{URL}}/api/bookinstance/{{TestBookinstance}}",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
 								"bookinstance",
 								"{{TestBookinstance}}"
 							]
@@ -113,12 +187,70 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/bookinstances",
+							"raw": "{{URL}}/api/bookinstance_list",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"bookinstances"
+								"api",
+								"bookinstance_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookinstance Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book\": \"\", //id\r\n    \"imprint\": \"\", //string\r\n    \"status\": \"\", //Maintenance/Available/Loaned/Reserved\r\n    \"due_back\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/bookinstance/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"bookinstance",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookinstance Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book\": \"\", //id\r\n    \"imprint\": \"\", //string\r\n    \"status\": \"\", //Maintenance/Available/Loaned/Reserved\r\n    \"due_back\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/bookinstance/{{TestBookinstance}}/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"bookinstance",
+								"{{TestBookinstance}}",
+								"update"
 							]
 						}
 					},
@@ -135,11 +267,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/genre/{{TestGenre}}",
+							"raw": "{{URL}}/api/genre/{{TestGenre}}",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
 								"genre",
 								"{{TestGenre}}"
 							]
@@ -153,12 +286,70 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/genres",
+							"raw": "{{URL}}/api/genre_list",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"genres"
+								"api",
+								"genre_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\" //string\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/genre/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\" //string\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/genre/{{TestGenre}}/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"{{TestGenre}}",
+								"update"
 							]
 						}
 					},
@@ -202,12 +393,12 @@
 		},
 		{
 			"key": "TestAuthor",
-			"value": "65eedcb657adeb8db5b6f1e7",
+			"value": "65eedcb657adeb8db5b6f1e6",
 			"type": "string"
 		},
 		{
 			"key": "TestBookinstance",
-			"value": "65eedcb657adeb8db5b6f1fd",
+			"value": "65eedcb657adeb8db5b6f206",
 			"type": "string"
 		},
 		{
