@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       window.location.href = 'http://localhost:3000/catalog/authors';
                   })
                   .catch(error => {
-                      console.error('Ошибка при выполнении функции deleteAuthor:', error);
+                      console.error('Error when running deleteAuthor function:', error);
                   });
           };
           
